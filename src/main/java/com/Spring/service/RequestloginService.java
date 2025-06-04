@@ -1,8 +1,7 @@
 package com.Spring.service;
 
-import com.Spring.model.Donarlogin;
 
-public interface DonarloginService {
+public interface RequestloginService {
     boolean validateLogin(String username, String password);
    
 }

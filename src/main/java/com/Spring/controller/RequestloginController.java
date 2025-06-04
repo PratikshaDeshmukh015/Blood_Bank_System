@@ -1,6 +1,8 @@
 package com.Spring.controller;
 
-import com.Spring.service.DonarloginService;
+
+import com.Spring.service.RequestloginService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController // NOTE: Use @RestController to return JSON
-public class DonarLoginController {
+public class RequestloginController {
 
     @Autowired
-    private DonarloginService donorLoginService;
+    private RequestloginService donorLoginService;
 
-    @PostMapping("/donar-login")
+    @PostMapping("/request-login")
     public ResponseEntity<?> processLogin(@RequestBody Map<String, String> loginData) {
         String username = loginData.get("username");
         String password = loginData.get("password");

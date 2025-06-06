@@ -37,6 +37,7 @@ public class DonarRegisterController {
 
 
 
+    
 @PostMapping("/login")
 public ResponseEntity<?> loginDonor(@RequestBody DonarRegister loginRequest) {
     try {
@@ -56,4 +57,15 @@ public ResponseEntity<?> loginDonor(@RequestBody DonarRegister loginRequest) {
     }
 }
 
+@PutMapping("/update")
+public ResponseEntity<?> updateDonor(@RequestBody DonarRegister donorUpdate) {
+    try {
+        DonarRegister updatedDonor = donorService.updateDonor(donorUpdate);
+        return ResponseEntity.ok(updatedDonor);
+    } catch (Exception e) {
+        return ResponseEntity.status(500).body("Failed to update donor: " + e.getMessage());
+    }
 }
+}
+
+

@@ -8,4 +8,6 @@ public interface DonarRegisterService {
     DonarRegister saveDonor(DonarRegister donor);
     List<DonarRegister> getAllDonors();
     DonarRegister getDonorByCredentials(String userName, String password);
+    DonarRegister updateDonor(DonarRegister donor);
+   
 }

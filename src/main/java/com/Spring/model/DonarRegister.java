@@ -1,6 +1,5 @@
 package com.Spring.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,7 +8,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "donar_Register")
-
 public class DonarRegister {
 
     @Id
@@ -19,6 +17,7 @@ public class DonarRegister {
     private String name;
     private int age;
     private String bloodGroup;
+    private int units; // New field added
     private String phone;
     private String email;
     private String username;
@@ -37,6 +36,9 @@ public class DonarRegister {
 
     public String getBloodGroup() { return bloodGroup; }
     public void setBloodGroup(String bloodGroup) { this.bloodGroup = bloodGroup; }
+
+    public int getUnits() { return units; } // Getter for units
+    public void setUnits(int units) { this.units = units; } // Setter for units
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }

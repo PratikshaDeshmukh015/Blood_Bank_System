@@ -33,22 +33,32 @@ public class DonarRegisterServiceImp implements DonarRegisterService {
 
 
 // ✅ Update donor
-@Override
-public DonarRegister updateDonor(DonarRegister updatedDonor) {
-    Optional<DonarRegister> existingOptional = donorRepository.findById(updatedDonor.getId());
+    @Override
+    public DonarRegister updateDonor(DonarRegister updatedDonor) {
+        Optional<DonarRegister> existingOptional = donorRepository.findById(updatedDonor.getId());
 
-    if (existingOptional.isPresent()) {
-        DonarRegister existingDonor = existingOptional.get();
+        if (existingOptional.isPresent()) {
+            DonarRegister existingDonor = existingOptional.get();
 
-        // Update allowed fields
-        existingDonor.setEmail(updatedDonor.getEmail());
-        existingDonor.setPhone(updatedDonor.getPhone());
-        existingDonor.setAge(updatedDonor.getAge());
-        existingDonor.setBloodGroup(updatedDonor.getBloodGroup());
+            // Update allowed fields
+            existingDonor.setEmail(updatedDonor.getEmail());
+            existingDonor.setPhone(updatedDonor.getPhone());
+            existingDonor.setAge(updatedDonor.getAge());
+            existingDonor.setUnits(updatedDonor.getUnits());
+            existingDonor.setBloodGroup(updatedDonor.getBloodGroup());
 
-        return donorRepository.save(existingDonor);
-    } else {
-        throw new RuntimeException("Donor not found with ID: " + updatedDonor.getId());
-   }
-}
+            return donorRepository.save(existingDonor);
+        } else {
+            throw new RuntimeException("Donor not found with ID: " + updatedDonor.getId());
+       }
+    }
+    
+    @Override
+    public boolean deleteDonorById(Long id) {
+        if (donorRepository.existsById(id)) {
+            donorRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

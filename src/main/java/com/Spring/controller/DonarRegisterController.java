@@ -66,6 +66,22 @@ public ResponseEntity<?> updateDonor(@RequestBody DonarRegister donorUpdate) {
         return ResponseEntity.status(500).body("Failed to update donor: " + e.getMessage());
     }
 }
+
+@DeleteMapping("/delete/{id}")
+public ResponseEntity<?> deleteDonor(@PathVariable Long id) {
+    try {
+        boolean deleted = donorService.deleteDonorById(id);
+        if (deleted) {
+            return ResponseEntity.ok("Donor deleted successfully with ID: " + id);
+        } else {
+            return ResponseEntity.status(404).body("Donor not found with ID: " + id);
+        }
+    } catch (Exception e) {
+        return ResponseEntity.status(500).body("Failed to delete donor: " + e.getMessage());
+    }
+}
+
+
 }
 
 

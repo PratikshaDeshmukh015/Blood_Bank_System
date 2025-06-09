@@ -27,4 +27,31 @@ public class RequestServiceImp implements RequestService {
     public List<Request> getAllRequests() {
         return repository.findAll(); // Fetches all records
     }
+    
+    @Override
+    public Request updateRequest(Long number, Request updatedRequest) {
+        Request existingRequest = repository.findById(number).orElse(null);
+        if (existingRequest != null) {
+            existingRequest.setName(updatedRequest.getName());
+            existingRequest.setEmail(updatedRequest.getEmail());
+            existingRequest.setBloodGroup(updatedRequest.getBloodGroup());
+            existingRequest.setUnits(updatedRequest.getUnits());
+            existingRequest.setDate(updatedRequest.getDate());
+            existingRequest.setHospital(updatedRequest.getHospital());
+            existingRequest.setContact(updatedRequest.getContact());
+            return repository.save(existingRequest);
+        }
+        return null;
+    }
+    
+    @Override
+    public boolean deleteRequest(Long number) {
+        if (repository.existsById(number)) {
+            repository.deleteById(number);
+            return true;
+        }
+        return false;
+    }
 }
+
+

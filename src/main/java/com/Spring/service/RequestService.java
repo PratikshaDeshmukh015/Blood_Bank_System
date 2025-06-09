@@ -7,6 +7,8 @@ import com.Spring.model.Request;
 
 public interface RequestService {
     Request saveRequest(Request request);
-    List<Request> getAllRequests(); 
+    List<Request> getAllRequests();
+    Request updateRequest(Long number, Request updatedRequest);
+    boolean deleteRequest(Long number); 
 }
 

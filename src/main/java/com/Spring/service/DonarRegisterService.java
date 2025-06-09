@@ -9,5 +9,6 @@ public interface DonarRegisterService {
     List<DonarRegister> getAllDonors();
     DonarRegister getDonorByCredentials(String userName, String password);
     DonarRegister updateDonor(DonarRegister donor);
+    boolean deleteDonorById(Long id);
    
 }
